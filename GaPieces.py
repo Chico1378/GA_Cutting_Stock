@@ -143,69 +143,69 @@ for looper in range(generations):
         canvas.create_rectangle(0, 0, width, height, fill='khaki')   
         display_individual = totalPopulation[indv_count]
 
-    totalXOverlap = 0
-    totalYOverlap = 0
-    totalSquareOverlap = 0
+        totalXOverlap = 0
+        totalYOverlap = 0
+        totalSquareOverlap = 0
 
-    for piece_count in range(individuals):
-        canvas.create_rectangle(display_individual[piece_count].get("x1"),
-            display_individual[piece_count].get("y1"),
-            display_individual[piece_count].get("x2"),
-            display_individual[piece_count].get("y2"),
-            fill = display_individual[piece_count].get("color"),
-            outline = "black")
-            #tkFont.Font(family='Helvetica',size=36, weight='bold') # http://infohost.nmt.edu/tcc/help/pubs/tkinter/web/fonts.html
-        canvas.create_text(display_individual[piece_count].get("x1") + 20,
-            display_individual[piece_count].get("y1") + 20,
-            text=str(piece_count))
+        for piece_count in range(individuals):
+            canvas.create_rectangle(display_individual[piece_count].get("x1"),
+                display_individual[piece_count].get("y1"),
+                display_individual[piece_count].get("x2"),
+                display_individual[piece_count].get("y2"),
+                fill = display_individual[piece_count].get("color"),
+                outline = "black")
+                #tkFont.Font(family='Helvetica',size=36, weight='bold') # http://infohost.nmt.edu/tcc/help/pubs/tkinter/web/fonts.html
+            canvas.create_text(display_individual[piece_count].get("x1") + 20,
+                display_individual[piece_count].get("y1") + 20,
+                text=str(piece_count))
 
-                #for each second piece in this individual (the for loop this is contained in runs through the 'first' pieces)
-                    #if the second and first piece are not the same piece
-                        #if the first piece's right side x value is greater than the second piece's left side x value,
-                        #AND the first piece's left side x value is less than the second piece's left side x value
-                            #get the x overlap for that piece pair, and add it to the total x overlap
-                        #elif the pieces' right side x values are the same, the x overlap is 200. This only works
-                        #with the current squares of side lengths 200 obviously, I'll change it later
+                    #for each second piece in this individual (the for loop this is contained in runs through the 'first' pieces)
+                        #if the second and first piece are not the same piece
+                            #if the first piece's right side x value is greater than the second piece's left side x value,
+                            #AND the first piece's left side x value is less than the second piece's left side x value
+                                #get the x overlap for that piece pair, and add it to the total x overlap
+                            #elif the pieces' right side x values are the same, the x overlap is 200. This only works
+                            #with the current squares of side lengths 200 obviously, I'll change it later
 
-                #checking for y overlap is the same as x but with y values
+                    #checking for y overlap is the same as x but with y values
 
-        for pieceToCompare in range(individuals):
+            for pieceToCompare in range(individuals):
 
-            yOverlap = 0
-            xOverlap = 0
+                yOverlap = 0
+                xOverlap = 0
 
-            if pieceToCompare != piece_count:
-                if display_individual[piece_count].get("x2") > display_individual[pieceToCompare].get("x1") and (display_individual[piece_count].get("x1") < display_individual[pieceToCompare].get("x1")):
-                    xOverlap = abs(display_individual[piece_count].get("x2") - display_individual[pieceToCompare].get("x1"))
-                    totalXOverlap = totalXOverlap + xOverlap
-                    #print("xOverlap for ", piece_count, "with", pieceToCompare, "is ", xOverlap)
-                elif display_individual[piece_count].get("x2") == display_individual[pieceToCompare].get("x2"):
-                    xOverlap = 200
-                    totalXOverlap = totalXOverlap + xOverlap
-                    #print("COMPLETE OVERLAP xOverlap for ", piece_count, "with", pieceToCompare, "is ", xOverlap)
+                if pieceToCompare != piece_count:
+                    if display_individual[piece_count].get("x2") > display_individual[pieceToCompare].get("x1") and (display_individual[piece_count].get("x1") < display_individual[pieceToCompare].get("x1")):
+                        xOverlap = abs(display_individual[piece_count].get("x2") - display_individual[pieceToCompare].get("x1"))
+                        totalXOverlap = totalXOverlap + xOverlap
+                        #print("xOverlap for ", piece_count, "with", pieceToCompare, "is ", xOverlap)
+                    elif display_individual[piece_count].get("x2") == display_individual[pieceToCompare].get("x2"):
+                        xOverlap = 200
+                        totalXOverlap = totalXOverlap + xOverlap
+                        #print("COMPLETE OVERLAP xOverlap for ", piece_count, "with", pieceToCompare, "is ", xOverlap)
 
-            if pieceToCompare != piece_count:
-                if display_individual[piece_count].get("y2") > display_individual[pieceToCompare].get("y1") and (display_individual[piece_count].get("y1") < display_individual[pieceToCompare].get("y1")):
-                    yOverlap = abs(display_individual[piece_count].get("y2") - display_individual[pieceToCompare].get("y1"))
-                    totalYOverlap = totalYOverlap + yOverlap
-                    #print("yOverlap for ", piece_count, "with", pieceToCompare, "is ", yOverlap)
-                elif display_individual[piece_count].get("y2") == display_individual[pieceToCompare].get("y2"):
-                    yOverlap = 200
-                    totalYOverlap = totalYOverlap + yOverlap
-                    #print("COMPLETE OVERLAP yOverlap for ", piece_count, "with", pieceToCompare, "is ", yOverlap)
+                if pieceToCompare != piece_count:
+                    if display_individual[piece_count].get("y2") > display_individual[pieceToCompare].get("y1") and (display_individual[piece_count].get("y1") < display_individual[pieceToCompare].get("y1")):
+                        yOverlap = abs(display_individual[piece_count].get("y2") - display_individual[pieceToCompare].get("y1"))
+                        totalYOverlap = totalYOverlap + yOverlap
+                        #print("yOverlap for ", piece_count, "with", pieceToCompare, "is ", yOverlap)
+                    elif display_individual[piece_count].get("y2") == display_individual[pieceToCompare].get("y2"):
+                        yOverlap = 200
+                        totalYOverlap = totalYOverlap + yOverlap
+                        #print("COMPLETE OVERLAP yOverlap for ", piece_count, "with", pieceToCompare, "is ", yOverlap)
 
-    totalSquareOverlap = totalXOverlap * totalYOverlap
+        totalSquareOverlap = totalXOverlap * totalYOverlap
 
-    #print("Total x overlap for individual: ", totalXOverlap)
-    #print("Total y overlap for individual: ", totalYOverlap)
-    #print("Total square overlap for individual: ", totalSquareOverlap)
+        #print("Total x overlap for individual: ", totalXOverlap)
+        #print("Total y overlap for individual: ", totalYOverlap)
+        #print("Total square overlap for individual: ", totalSquareOverlap)
 
-    canvas.update()
-    time.sleep(1) # HARDCODED TIME -- pause briefly between generations
+        canvas.update()
+        time.sleep(1) # HARDCODED TIME -- pause briefly between generations
 
+            
+        #selection_list[POPULATION_SIZE]= PopulationCount(x ,population[x], totalSquareOverlap)
+        #print(selection_list)
         
-    #selection_list[POPULATION_SIZE]= PopulationCount(x ,population[x], totalSquareOverlap)
-    #print(selection_list)
-    
 
 mainloop()   # Graphics loop -- This statement follows all other statements
