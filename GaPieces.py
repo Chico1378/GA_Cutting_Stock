@@ -146,7 +146,9 @@ for looper in range(generations):
         totalXOverlap = 0
         totalYOverlap = 0
         totalSquareOverlap = 0
-
+        canvas.create_text(50,10, text = ("Population",indv_count))
+        canvas.create_text(50,20, text = ("Generation",looper))
+        
         for piece_count in range(individuals):
             canvas.create_rectangle(display_individual[piece_count].get("x1"),
                 display_individual[piece_count].get("y1"),
@@ -158,6 +160,7 @@ for looper in range(generations):
             canvas.create_text(display_individual[piece_count].get("x1") + 20,
                 display_individual[piece_count].get("y1") + 20,
                 text=str(piece_count))
+            
 
                     #for each second piece in this individual (the for loop this is contained in runs through the 'first' pieces)
                         #if the second and first piece are not the same piece
