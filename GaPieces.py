@@ -54,7 +54,7 @@ for population_count in range(population_size):
     for indv_count in range(individuals):
         w = line[size_countw]
         h = line[size_counth]
-        c = random.choice(piece_colors)
+        c = piece_colors[indv_count]
         x1 = random.randint(0, width - w)
         y1 = random.randint(0, height - h)
 
